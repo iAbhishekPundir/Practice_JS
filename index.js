@@ -243,3 +243,25 @@
 //*Functions are "First Class Citizens"
 //*Javascript is a synchronous and single-threaded language, but due to "Callbacks" we
 //*can do "async" things in JS.
+
+//*Arrow functions : Arrow functions allow us to write shorter function
+//syntax :
+// let myFunction = (a, b) => a*b;
+// console.log(myFunction(2,3)); 
+
+//*Callback functions in JS ft. Event Listeners
+
+// setTimeout(function (){
+//     console.log("timer");
+// }, 5000);
+
+function x(y) {
+    console.log("x");
+    y();
+}
+
+x(function y(){
+    console.log("y");
+});
+
+
