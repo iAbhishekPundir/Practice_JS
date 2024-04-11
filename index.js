@@ -255,13 +255,25 @@
 //     console.log("timer");
 // }, 5000);
 
-function x(y) {
-    console.log("x");
-    y();
-}
+// function x(y) {
+//     console.log("x");
+//     y();
+// }
 
-x(function y(){
-    console.log("y");
-});
+// x(function y(){
+//     console.log("y");
+// });
+
+//* 17 - Callback functions in JS ft. Event Listeners
+// Functions that are passed into another function as an argument are known as "Callback function"
+// They gives us the access to whole "asynchronous world" in a single synchronous threaded language.
+
+//* NOTE : "Anything" whatever is executed inside our page is executed through "callstack" only.
+//* If any operation blocks the callstack that is known as Blocking the main thread.
+//for eg. - Suppose we have some operation which will consume so much time so in that case it will block the main
+// thread, and JavaScript uses a single thread, so it won't be able to execute any other line of code.
+//*We should never block the main thread that's why we should always use "async" operations for the things/function
+//* that is going to take time.
+
 
 
