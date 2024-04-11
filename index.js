@@ -275,5 +275,23 @@
 //*We should never block the main thread that's why we should always use "async" operations for the things/function
 //* that is going to take time.
 
+//*Interview question
+//Print the number of times, button clicked
+
+// let count = 0;
+// var btn = document.getElementById("clickMe");
+// btn.onclick = function() {
+//     count++;
+//     console.log(count);
+// }
+
+function attachEventListeners() {
+    let count = 0;
+    var btn = document.getElementById("clickMe");
+    btn.addEventListener("click", () => {
+        console.log("Button clicked", ++count);
+    });
+}
+attachEventListeners();
 
 
