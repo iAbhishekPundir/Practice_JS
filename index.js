@@ -314,5 +314,21 @@
 // // button.removeEventListener('click', handleClick);
 // setTimeout(()=> button.removeEventListener('click', handleClick), 9000);
 
+//*Asynchronous JavaScript & EventLoop 
+
+console.log("start");
+setTimeout(function cb() {
+    console.log("callback");
+}, 2000);
+console.log("end");
+
+console.log("start");
+const btn = document.getElementById('clickMe');
+btn.addEventListener('click', function cb() {
+    console.log("clicked");
+})
+console.log("end");
+
+
 
 
