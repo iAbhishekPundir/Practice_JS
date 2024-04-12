@@ -316,17 +316,27 @@
 
 //*Asynchronous JavaScript & EventLoop 
 
-console.log("start");
-setTimeout(function cb() {
-    console.log("callback");
-}, 2000);
-console.log("end");
+// console.log("start");
+// setTimeout(function cb() {
+//     console.log("callback");
+// }, 2000);
+// console.log("end");
+
+// console.log("start");
+// const btn = document.getElementById('clickMe');
+// btn.addEventListener('click', function cb() {
+//     console.log("clicked");
+// })
+// console.log("end");
 
 console.log("start");
-const btn = document.getElementById('clickMe');
-btn.addEventListener('click', function cb() {
-    console.log("clicked");
-})
+setTimeout(function cbT() {
+    console.log("CB Timeout");
+}, 1);
+fetch("https://www.google.com/")
+.then(function cbF() {
+    console.log("CB Netflix");
+});
 console.log("end");
 
 
