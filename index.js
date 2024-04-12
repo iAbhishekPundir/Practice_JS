@@ -295,13 +295,24 @@
 // attachEventListeners();
 
 //*Garbage Collection & remove EventListeners
-const button = document.getElementById('clickMe');
+// const button = document.getElementById('clickMe');
 
-button.addEventListener('click', function(event) {
-    console.log('Button clicked!');
-    console.log('Event type:', event.type);
-    console.log('Target element:', event.target);
-});
+// button.addEventListener('click', function(event) {
+//     console.log('Button clicked!');
+//     console.log('Event type:', event.type);
+//     console.log('Target element:', event.target);
+// });
+// const button = document.getElementById('clickMe');
+
+// function handleClick() {
+//     console.log('Button clicked!');
+// }
+
+// // Adding event listener
+// button.addEventListener('click', handleClick);
+// // Removing event listener
+// // button.removeEventListener('click', handleClick);
+// setTimeout(()=> button.removeEventListener('click', handleClick), 9000);
 
 
 
