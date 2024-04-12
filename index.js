@@ -285,13 +285,23 @@
 //     console.log(count);
 // }
 
-function attachEventListeners() {
-    let count = 0;
-    var btn = document.getElementById("clickMe");
-    btn.addEventListener("click", () => {
-        console.log("Button clicked", ++count);
-    });
-}
-attachEventListeners();
+// function attachEventListeners() {
+//     let count = 0;
+//     var btn = document.getElementById("clickMe");
+//     btn.addEventListener("click", () => {
+//         console.log("Button clicked", ++count);
+//     });
+// }
+// attachEventListeners();
+
+//*Garbage Collection & remove EventListeners
+const button = document.getElementById('clickMe');
+
+button.addEventListener('click', function(event) {
+    console.log('Button clicked!');
+    console.log('Event type:', event.type);
+    console.log('Target element:', event.target);
+});
+
 
 
