@@ -329,15 +329,29 @@
 // })
 // console.log("end");
 
+// console.log("start");
+// setTimeout(function cbT() {
+//     console.log("CB Timeout");
+// }, 1);
+// fetch("https://www.google.com/")
+// .then(function cbF() {
+//     console.log("CB Netflix");
+// });
+// console.log("end");
+
 console.log("start");
-setTimeout(function cbT() {
-    console.log("CB Timeout");
-}, 1);
-fetch("https://www.google.com/")
-.then(function cbF() {
-    console.log("CB Netflix");
-});
+setTimeout(function cb() {
+    console.log("callback");
+}, 5000);
+
+let startDate = new Date().getTime();
+let endDate = startDate;
+while (endDate < startDate + 10000) {
+    endDate = new Date().getTime();
+}
+console.log("while expires");
 console.log("end");
+
 
 
 
