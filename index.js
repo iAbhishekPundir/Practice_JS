@@ -247,7 +247,7 @@
 //*Arrow functions : Arrow functions allow us to write shorter function
 //syntax :
 // let myFunction = (a, b) => a*b;
-// console.log(myFunction(2,3)); 
+// console.log(myFunction(2,3));
 
 //*Callback functions in JS ft. Event Listeners
 
@@ -314,7 +314,7 @@
 // // button.removeEventListener('click', handleClick);
 // setTimeout(()=> button.removeEventListener('click', handleClick), 9000);
 
-//*Asynchronous JavaScript & EventLoop 
+//*Asynchronous JavaScript & EventLoop
 
 // console.log("start");
 // setTimeout(function cb() {
@@ -364,20 +364,77 @@
 // y(x);
 
 //*Examples of Higher-Order Functions:
-//* Array.prototype.map(), Array.prototype.filter(), and Array.prototype.reduce() are higher-order functions in JavaScript. 
+//* Array.prototype.map(), Array.prototype.filter(), and Array.prototype.reduce() are higher-order functions in JavaScript.
 //* They take a function as an argument and apply it to each element of an array.
 //* setTimeout() and setInterval() are higher-order functions that accept a function as their first argument to execute after
 //*  a certain delay or at specified intervals.
 
 //*Example: Using Array.prototype.map() as a Higher-Order Function:
 
-const numbers = [1, 2, 3, 4, 5];
+// const numbers = [1, 2, 3, 4, 5];
 
-// Using map() to double each element in the array
-const doubledNumbers = numbers.map((number) => number * 2);
+// // Using map() to double each element in the array
+// const doubledNumbers = numbers.map((number) => number * 2);
 
-console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+// console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+
+//* WAP to calaculate an area of radius provided in an array
+
+// const radiusArray = [1,2,3,4,5,]
+
+// function calculateArea(radius) {
+//     return Math.PI * radius * radius;
+// }
+// function calculateCircumference(radius) {
+//     return 2 * Math.PI * radius;
+// }
+// areaArray = [];
+// areaArray = radiusArray.map((radius) => calculateArea(radius));
+// console.log(areaArray);
+
+// circumferenceArray = []
+// circumferenceArray = radiusArray.map((radius) =>calculateCircumference(radius));
+// console.log(circumferenceArray);
 
 
+//* Important Array Methods in JavaScript - map, filter, reduce
+const users = [
+  { firstName: "Alok", lastName: "Raj", age: 23 },
+  { firstName: "Ashish", lastName: "Kumar", age: 29 },
+  { firstName: "Dixit", lastName: "Kumar", age: 19 },
+  { firstName: "Ankit", lastName: "Roy", age: 29 },
+  { firstName: "Pranav", lastName: "Mukherjee", age: 50 },
+];
 
+//*map - to get user fullname
+const userFullName = users.map((user) => user.firstName + " " + user.lastName);
+console.log(userFullName);
+
+//*filter - to get name of those users whose age is less than 30
+
+// const selectedUser = users.filter((user) => user.age < 30);
+// console.log(selectedUser);
+//* method chaining
+// const selectedUser = users.filter((user) => user.age < 30).map(user => user.firstName);
+// console.log(selectedUser);
+
+//* find method - use to find the first element which satisfies the condition
+// const selectedUser = users.find(user => user.lastName === "Kumar");
+// console.log(selectedUser);
+
+// const report = users.reduce((acc, curr) => {
+//   if (acc[curr.age]) {
+//     acc[curr.age] = ++acc[curr.age];
+//   } else {
+//     acc[curr.age] = 1;
+//   }
+//   return acc; //to every time return update object
+// }, {});
+
+// const report = users.reduce((acc, curr) => ({
+//     ...acc,
+//     [curr.age]: (acc[curr.age] || 0) + 1
+//   }), {});
+  
+// console.log(report); // {29 : 2, 75 : 1, 50 : 1}
 
