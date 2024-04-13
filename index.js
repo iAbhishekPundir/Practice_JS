@@ -339,18 +339,30 @@
 // });
 // console.log("end");
 
-console.log("start");
-setTimeout(function cb() {
-    console.log("callback");
-}, 5000);
+// console.log("start");
+// setTimeout(function cb() {
+//     console.log("callback");
+// }, 0);
+// console.log("end");
+// let startDate = new Date().getTime();
+// let endDate = startDate;
+// while ( endDate < startDate + 10000) {
+//     endDate = new Date().getTime();
+// }
+// console.log("while expires");
 
-let startDate = new Date().getTime();
-let endDate = startDate;
-while (endDate < startDate + 10000) {
-    endDate = new Date().getTime();
+//* Higher-Order Functions ft. Functional Programming
+//Higher-order functions are regular functions that take other
+//functions as arguments or return functions as their result
+//e.g.,
+function x() {
+    console.log("Hi");
+};
+function y(z) {
+    z();
 }
-console.log("while expires");
-console.log("end");
+y(x);
+
 
 
 
