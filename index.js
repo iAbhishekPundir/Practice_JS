@@ -363,6 +363,12 @@ function y(z) {
 }
 y(x);
 
+//*Examples of Higher-Order Functions:
+//* Array.prototype.map(), Array.prototype.filter(), and Array.prototype.reduce() are higher-order functions in JavaScript. 
+//* They take a function as an argument and apply it to each element of an array.
+//* setTimeout() and setInterval() are higher-order functions that accept a function as their first argument to execute after
+//*  a certain delay or at specified intervals.
+
 
 
 
