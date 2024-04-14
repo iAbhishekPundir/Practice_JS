@@ -396,19 +396,18 @@
 // circumferenceArray = radiusArray.map((radius) =>calculateCircumference(radius));
 // console.log(circumferenceArray);
 
-
 //* Important Array Methods in JavaScript - map, filter, reduce
-const users = [
-  { firstName: "Alok", lastName: "Raj", age: 23 },
-  { firstName: "Ashish", lastName: "Kumar", age: 29 },
-  { firstName: "Dixit", lastName: "Kumar", age: 19 },
-  { firstName: "Ankit", lastName: "Roy", age: 29 },
-  { firstName: "Pranav", lastName: "Mukherjee", age: 50 },
-];
+// const users = [
+//   { firstName: "Alok", lastName: "Raj", age: 23 },
+//   { firstName: "Ashish", lastName: "Kumar", age: 29 },
+//   { firstName: "Dixit", lastName: "Kumar", age: 19 },
+//   { firstName: "Ankit", lastName: "Roy", age: 29 },
+//   { firstName: "Pranav", lastName: "Mukherjee", age: 50 },
+// ];
 
 //*map - to get user fullname
-const userFullName = users.map((user) => user.firstName + " " + user.lastName);
-console.log(userFullName);
+// const userFullName = users.map((user) => user.firstName + " " + user.lastName);
+// console.log(userFullName);
 
 //*filter - to get name of those users whose age is less than 30
 
@@ -435,6 +434,47 @@ console.log(userFullName);
 //     ...acc,
 //     [curr.age]: (acc[curr.age] || 0) + 1
 //   }), {});
-  
-// console.log(report); // {29 : 2, 75 : 1, 50 : 1}
 
+// console.log(report); // {29 : 2, 75 : 1, 50 : 1}
+// let a = 10;
+// const b = 20;
+// var n = 2;
+
+// function square(num) {
+//     var ans = num * num;
+//     return ans;
+// }
+
+// var square2 = square(n);
+// var square4 = square(4);
+// console.log(square2);
+// console.log(square4);
+
+//*Understanding of callback function
+// function a(param1, callback) {
+//   console.log(param1);
+//   callback(); // Invoke the callback function
+// }
+
+// a("print function a", function () {
+//   console.log("from callback");
+// });
+
+
+//*Understanding promises
+//* What is a Promise in JavaScript ?
+// A Promise is an object representing an eventual completion of failure of an 
+// asynchronous operation
+const cart = ["shoes", "pants", "kurta"];
+
+// 1. Placing an order without using promises
+createOrder(cart, function (orderId) {
+  proceedToPayment(orderId);
+});
+
+// 2. Placing an order using promises
+const promise = createOrder(cart);
+
+promise.then(function (orderId) {
+  proceedToPayment(orderId);
+});
