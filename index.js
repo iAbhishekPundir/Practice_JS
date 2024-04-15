@@ -460,21 +460,44 @@
 //   console.log("from callback");
 // });
 
-
 //*Understanding promises
 //* What is a Promise in JavaScript ?
-// A Promise is an object representing an eventual completion of failure of an 
+// A Promise is an object representing an eventual completion of failure of an
 // asynchronous operation
-const cart = ["shoes", "pants", "kurta"];
+// const cart = ["shoes", "pants", "kurta"];
 
-// 1. Placing an order without using promises
-createOrder(cart, function (orderId) {
-  proceedToPayment(orderId);
-});
+// // 1. Placing an order without using promises
+// createOrder(cart, function (orderId) {
+//   proceedToPayment(orderId);
+// });
 
-// 2. Placing an order using promises
-const promise = createOrder(cart);
+// // 2. Placing an order using promises
+// const promise = createOrder(cart);
 
-promise.then(function (orderId) {
-  proceedToPayment(orderId);
-});
+// promise.then(function (orderId) {
+//   proceedToPayment(orderId);
+// });
+
+// const fetchData = () => {
+//   return new Promise((resolve, reject) => {
+//     // Simulating an asynchronous operation
+//     setTimeout(() => {
+//       const data = Math.random() < 0.5 ? "Success" : "Error";
+//       if (data === "Success") {
+//         resolve(data); // Resolve the promise with data
+//       } else {
+//         reject(new Error("Failed to fetch data")); // Reject the promise with an error
+//       }
+//     }, 1000);
+//   });
+// };
+
+// // Using the promise
+// fetchData()
+//   .then((data) => {
+//     console.log("Data:", data);
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error.message);
+//   });
+
