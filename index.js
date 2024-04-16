@@ -501,3 +501,7 @@
 //     console.error("Error:", error.message);
 //   });
 
+createOrder(cart)
+    .then(orderId => proceedToPayment(orderId))
+    .then(paymentInfo => showOrderSummary(paymentInfo))
+    .then(paymentInfo => updateWalletBalance(paymentInfo))
