@@ -501,7 +501,18 @@
 //     console.error("Error:", error.message);
 //   });
 
-createOrder(cart)
-    .then(orderId => proceedToPayment(orderId))
-    .then(paymentInfo => showOrderSummary(paymentInfo))
-    .then(paymentInfo => updateWalletBalance(paymentInfo))
+// createOrder(cart)
+//     .then(orderId => proceedToPayment(orderId))
+//     .then(paymentInfo => showOrderSummary(paymentInfo))
+//     .then(paymentInfo => updateWalletBalance(paymentInfo))
+
+//* : How it is better than callback approach?
+//  In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
+//  But with promise, we are attaching a callback function to a promiseObject.
+//  There is difference between these words, passing a function and attaching a function.
+//  Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only 
+//  once. Justonce.
+//  Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than 
+//  that.
+//  Now let's understand and see a real promise object.
+//  fetch is a web-api which is utilized to make api call and it returns a promise.
