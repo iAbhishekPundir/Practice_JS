@@ -308,10 +308,10 @@
 //     console.log('Button clicked!');
 // }
 
-// // Adding event listener
+// Adding event listener
 // button.addEventListener('click', handleClick);
-// // Removing event listener
-// // button.removeEventListener('click', handleClick);
+// Removing event listener
+// button.removeEventListener('click', handleClick);
 // setTimeout(()=> button.removeEventListener('click', handleClick), 9000);
 
 //*Asynchronous JavaScript & EventLoop
@@ -373,7 +373,7 @@
 
 // const numbers = [1, 2, 3, 4, 5];
 
-// // Using map() to double each element in the array
+// Using map() to double each element in the array
 // const doubledNumbers = numbers.map((number) => number * 2);
 
 // console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
@@ -452,6 +452,7 @@
 
 //*Understanding of callback function
 // function a(param1, callback) {
+//   console.log(callback);
 //   console.log(param1);
 //   callback(); // Invoke the callback function
 // }
@@ -462,16 +463,17 @@
 
 //*Understanding promises
 //* What is a Promise in JavaScript ?
-// A Promise is an object representing an eventual completion of failure of an
-// asynchronous operation
+// A Promise is an object representing an eventual completion or failure of an
+// asynchronous operation.
+
 // const cart = ["shoes", "pants", "kurta"];
 
-// // 1. Placing an order without using promises
+// 1. Placing an order without using promises
 // createOrder(cart, function (orderId) {
 //   proceedToPayment(orderId);
 // });
 
-// // 2. Placing an order using promises
+// 2. Placing an order using promises
 // const promise = createOrder(cart);
 
 // promise.then(function (orderId) {
@@ -480,7 +482,7 @@
 
 // const fetchData = () => {
 //   return new Promise((resolve, reject) => {
-//     // Simulating an asynchronous operation
+// Simulating an asynchronous operation
 //     setTimeout(() => {
 //       const data = Math.random() < 0.5 ? "Success" : "Error";
 //       if (data === "Success") {
@@ -492,7 +494,7 @@
 //   });
 // };
 
-// // Using the promise
+// Using the promise
 // fetchData()
 //   .then((data) => {
 //     console.log("Data:", data);
@@ -510,51 +512,140 @@
 //  In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
 //  But with promise, we are attaching a callback function to a promiseObject.
 //  There is difference between these words, passing a function and attaching a function.
-//  Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only 
+//  Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only
 //  once. Justonce.
-//  Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than 
+//  Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than
 //  that.
 //  Now let's understand and see a real promise object.
 //  fetch is a web-api which is utilized to make api call and it returns a promise.
 
-
 // Creating a Promise, Chaining & Error Handlin
-// const cart = ["shoes", "pants", "kurta"]; 
-// // Consumer part of promise 
-// const promise = createOrder(cart); // orderId 
-// // Our expectation is above function is going to return me a promise. 
-// promise.then(function (orderId) { 
-// proceedToPayment(orderId); 
-// }); 
-// // Above snippet we have observed in our previous lecture itself. 
-// // Now we will see, how createOrder is implemented so that it is returning a promise 
-// // In short we will see, "How we can create Promise" and then return it. 
-// // Producer part of Promise 
-// function createOrder(cart) { 
-// // JS provides a Promise constructor through which we can create promise 
-// // It accepts a callback function with two parameter `resolve` & `reject` 
-// const promise = new Promise(function (resolve, reject) { 
-// // 64 / 68
-// // lectures.md
-//  // What is this `resolve` and `reject`? 
-// // These are function which are passed by javascript to us in order to handle success 
-// // and failure of function call. 
-// // Now we will write logic to `createOrder` 
-// /** Mock logic steps 
-//      * 1. validateCart 
-//      * 2. Insert in DB and get an orderId 
-//      */ 
-// // We are assuming in real world scenario, validateCart would be defined 
-// if (!validateCart(cart)) { 
-// // If cart not valid, reject the promise 
-// const err = new Error("Cart is not Valid"); 
-// reject(err); 
-//     } 
-// const orderId = "12345"; // We got this id by calling to db (Assumption) 
-// if (orderId) { 
-// // Success scenario 
-// resolve(orderId); 
-//     } 
-//   }); 
-// return promise; 
+// const cart = ["shoes", "pants", "kurta"];
+// Consumer part of promise
+// const promise = createOrder(cart); // orderId
+// // Our expectation is above function is going to return me a promise.
+// promise.then(function (orderId) {
+// proceedToPayment(orderId);
+// });
+// Above snippet we have observed in our previous lecture itself.
+// Now we will see, how createOrder is implemented so that it is returning a promise
+// In short we will see, "How we can create Promise" and then return it.
+// Producer part of Promise
+// function createOrder(cart) {
+// JS provides a Promise constructor through which we can create promise
+// It accepts a callback function with two parameter `resolve` & `reject`
+// const promise = new Promise(function (resolve, reject) {
+// 64 / 68
+// lectures.md
+//  What is this `resolve` and `reject`?
+// These are function which are passed by javascript to us in order to handle success
+// and failure of function call.
+// Now we will write logic to `createOrder`
+
+/** Mock logic steps
+ * 1. validateCart
+ * 2. Insert in DB and get an orderId
+ */
+// We are assuming in real world scenario, validateCart would be defined
+// if (!validateCart(cart)) {
+// // If cart not valid, reject the promise
+// const err = new Error("Cart is not Valid");
+// reject(err);
+//     }
+// const orderId = "12345"; // We got this id by calling to db (Assumption)
+// if (orderId) {
+// // Success scenario
+// resolve(orderId);
+//     }
+//   });
+// return promise;
 // }
+
+// const cart = ["shoes", "pants", "kurta"];
+
+// createOrder(cart)
+//   .then(function (orderId) {
+//     // Promise chaining
+//     // 💡 we will make sure that `proceedToPayment` returns a promise too
+//     console.log("line 570", orderId);
+//     console.log("line 571", proceedToPayment(orderId));
+//     return proceedToPayment(orderId);
+//   })
+//   .then((paymentInfo) => {
+//     // from above, `proceedToPayment` is returning a promise so we can consume using `.then`;
+//     console.log("line 582", paymentInfo);
+//   })
+//   .catch(function (err) {
+//     // ⚠️ failure aka reject handling
+//     console.log(err);
+//   });
+// // Here we are creating Promise
+// function createOrder(cart) {
+//   const promise = new Promise(function (resolve, reject) {
+//     // Assume below `validateCart` return false then the promise will be rejected
+//     // And then our browser is going to throw the error.
+//     if (!validateCart(cart)) {
+//       const err = new Error("Cart is not Valid");
+//       reject(err);
+//     }
+//     const orderId = "12345";
+//     if (orderId) {
+//       resolve(orderId);
+//     }
+//   });
+//   console.log("line 596", promise);
+//   return promise;
+// }
+// function proceedToPayment(cart) {
+//   return new Promise(function (resolve, reject) {
+//     // For time being, we are simply `resolving` promise
+//     resolve("Payment Successful");
+//   });
+// }
+
+// function validateCart(cart) {
+//   return cart.length > 0;
+// }
+
+//********************************* */
+
+const cart2 = ["shoes", "pants", "kurta"];
+createOrder2(cart2, function () {
+  console.log(cart2);
+})
+  .then(function (orderId) {
+    return proceedToPayment2(orderId);
+  })
+  .then((paymentInfo) => console.log(paymentInfo))
+  .catch((err) => console.log(err));
+
+function createOrder2(cart, callback) {
+  const promise = new Promise(function (resolve, reject) {
+    const orderId = "12345";
+    if (!validateCart2(cart)) {
+      const error = new Error("Cart is not valid");
+      reject(error);
+    } if(orderId) {
+      resolve(orderId);
+      callback();
+    }
+  });
+  console.log("line 633, promise : ", promise);
+  return promise;
+}
+
+function validateCart2(cart2) {
+  return cart2.length > 0;
+}
+
+function proceedToPayment2(orderId) {
+  const promise2 = new Promise(function (resolve, reject) {
+    if (orderId === "12345") {
+      resolve("Payment successful");
+    } else {
+      reject("Payment not successful");
+    }
+  });
+  console.log("line 648, promise2 : ", promise2);
+  return promise2;
+}
