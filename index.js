@@ -609,43 +609,125 @@
 
 //********************************* */
 
-const cart2 = ["shoes", "pants", "kurta"];
-createOrder2(cart2, function () {
-  console.log(cart2);
+// const cart2 = ["shoes", "pants", "kurta"];
+// createOrder2(cart2, function () {
+//   console.log(cart2);
+// })
+//   .then(function (orderId) {
+//     return proceedToPayment2(orderId);
+//   })
+//   .then((paymentInfo) => console.log(paymentInfo))
+//   .catch((err) => console.log(err));
+
+// function createOrder2(cart, callback) {
+//   const promise = new Promise(function (resolve, reject) {
+//     const orderId = "12345";
+//     if (!validateCart2(cart)) {
+//       const error = new Error("Cart is not valid");
+//       reject(error);
+//     } if(orderId) {
+//       resolve(orderId);
+//       callback();
+//     }
+//   });
+//   console.log("line 633, promise : ", promise);
+//   return promise;
+// }
+
+// function validateCart2(cart2) {
+//   return cart2.length > 0;
+// }
+
+// function proceedToPayment2(orderId) {
+//   const promise2 = new Promise(function (resolve, reject) {
+//     if (orderId === "12345") {
+//       resolve("Payment successful");
+//     } else {
+//       reject("Payment not successful");
+//     }
+//   });
+//   console.log("line 648, promise2 : ", promise2);
+//   return promise2;
+// }
+
+
+const cart = ["shoes", "pants", "kurta"];
+
+createOrder(cart, function (){
+    console.log("cart items : ", cart);
 })
-  .then(function (orderId) {
-    return proceedToPayment2(orderId);
-  })
-  .then((paymentInfo) => console.log(paymentInfo))
-  .catch((err) => console.log(err));
+.then(function (orderId){
+    return proceedToPayment(orderId);
+})
+.then(function(paymentInfo){
+    return showOrderSummary(paymentInfo);
+})
+.then(function(orderSummary){
+    return updateWallet(orderSummary);
+})
+.then(function(wallet){
+    console.log(wallet);
+})
+.catch((error), function (){
+    console.log(error);
+})
 
-function createOrder2(cart, callback) {
-  const promise = new Promise(function (resolve, reject) {
-    const orderId = "12345";
-    if (!validateCart2(cart)) {
-      const error = new Error("Cart is not valid");
-      reject(error);
-    } if(orderId) {
-      resolve(orderId);
-      callback();
-    }
-  });
-  console.log("line 633, promise : ", promise);
-  return promise;
+function createOrder(cart, callback) {
+    const cartPromise = new Promise(function (resolve, reject){
+        if (!validateCart(cart)) {
+            const error = new Error("Cart is empty");
+            reject(error);
+        }
+        const orderId = generateOrderId(cart);
+        if (orderId > 0) {
+            callback();
+            resolve("12345");
+        }
+        
+    });
+    return cartPromise;
 }
 
-function validateCart2(cart2) {
-  return cart2.length > 0;
+function validateCart(cart) {
+    return cart.length > 0;
 }
 
-function proceedToPayment2(orderId) {
-  const promise2 = new Promise(function (resolve, reject) {
-    if (orderId === "12345") {
-      resolve("Payment successful");
-    } else {
-      reject("Payment not successful");
-    }
-  });
-  console.log("line 648, promise2 : ", promise2);
-  return promise2;
+function generateOrderId(cart) {
+    return  cart && Math.random();
+}
+
+function proceedToPayment(orderId) {
+    const paymentPromise = new Promise(function (resolve, reject){
+        if (orderId) {
+            resolve("Payment Successful")
+        }
+        else {
+            reject("Error occured")
+        }
+    })
+    return paymentPromise;
+}
+
+function showOrderSummary(orderId) {
+    const orderPromise = new Promise(function (resolve, reject){
+        if (orderId) {
+            resolve("Order is placed successfully")
+        }
+        else {
+            reject("Error occured")
+        }
+    })
+    return orderPromise;
+}
+
+function updateWallet(orderId) {
+    const walletPromise = new Promise(function (resolve, reject){
+        if (orderId) {
+            resolve("Wallet is updated successfully")
+        }
+        else {
+            reject("Error occured")
+        }
+    })
+    return walletPromise;
 }
