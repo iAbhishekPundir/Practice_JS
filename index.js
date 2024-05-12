@@ -657,16 +657,19 @@ createOrder(cart, function (){
     console.log("cart items : ", cart);
 })
 .then(function (orderId){
+    console.log("line 660", orderId);
     return proceedToPayment(orderId);
 })
 .then(function(paymentInfo){
+    console.log("line 664", paymentInfo);
     return showOrderSummary(paymentInfo);
 })
 .then(function(orderSummary){
+    console.log("line 668", orderSummary);
     return updateWallet(orderSummary);
 })
 .then(function(wallet){
-    console.log(wallet);
+    console.log("line 672", wallet);
 })
 .catch((error), function (){
     console.log(error);
