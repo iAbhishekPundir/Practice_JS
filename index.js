@@ -607,7 +607,7 @@
 //   return cart.length > 0;
 // }
 
-//********************************* */
+// ********************************* */
 
 // const cart2 = ["shoes", "pants", "kurta"];
 // createOrder2(cart2, function () {
@@ -649,6 +649,8 @@
 //   console.log("line 648, promise2 : ", promise2);
 //   return promise2;
 // }
+
+// ***************************************************************
 
 // const cart = ["shoes", "pants", "kurta"];
 
@@ -836,3 +838,4 @@
 // }
 // completePurchase(shoppingCart);
 
+//async-await
