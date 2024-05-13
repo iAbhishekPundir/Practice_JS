@@ -668,9 +668,9 @@
 //     return updateWallet(orderSummary);
 //   })
 //   .then(function (wallet) {
-//     console.log("line 672", wallet);
+//     console.log("line 672", wallet.data);
 //   })
-//   .catch(error, function () {
+//   .catch(function (error) {
 //     console.log(error);
 //   });
 
@@ -723,110 +723,116 @@
 // function updateWallet(orderId) {
 //   const walletPromise = new Promise(function (resolve, reject) {
 //     if (orderId) {
-//       setTimeout(() => resolve("Wallet is updated successfully"), 1000);
+//         walletobj = {
+//             "data":"Wallet is updated successfully",
+//             "message":"success"
+//         }
+//       setTimeout(() => resolve(walletobj), 1000);
 //     } else {
 //       reject("Error occured");
 //     }
 //   });
+//   console.log("line 735", walletPromise);
 //   return walletPromise;
 // }
 
 //Here's the enhanced version of above code
 
-const shoppingCart = ["shoes", "pants", "kurta"];
+// const shoppingCart = ["shoes", "pants", "kurta"];
 
-//Main fucntion to simulate the online shopping process
-async function completePurchase(cart) {
-  try {
-    console.log("Starting online shopping process...");
+// //Main fucntion to simulate the online shopping process
+// async function completePurchase(cart) {
+//   try {
+//     console.log("Starting online shopping process...");
 
-    //Create order
-    const orderId = await createOrder(cart);
-    console.log("Order created. ID:", orderId);
+//     //Create order
+//     const orderId = await createOrder(cart);
+//     console.log("Order created. ID:", orderId);
 
-    //Proceed to payment
-    const paymentStatus = await proceedToPayment(orderId);
-    console.log("Payment status:", paymentStatus);
+//     //Proceed to payment
+//     const paymentStatus = await proceedToPayment(orderId);
+//     console.log("Payment status:", paymentStatus);
 
-    //Show order summary
-    const orderSummary = await showOrderSummary(orderId);
-    console.log("Order summary:", orderSummary);
+//     //Show order summary
+//     const orderSummary = await showOrderSummary(orderId);
+//     console.log("Order summary:", orderSummary);
 
-    //Update wallet
-    const walletStatus = await updateWallet(orderId);
-    console.log("Wallet status:", walletStatus);
+//     //Update wallet
+//     const walletStatus = await updateWallet(orderId);
+//     console.log("Wallet status:", walletStatus);
 
-    console.log("Online shopping process completed successfully.")
-  } catch (error) {
-    console.log("An error occurred:", error.message);
-  }
-}
+//     console.log("Online shopping process completed successfully.")
+//   } catch (error) {
+//     console.log("An error occurred:", error.message);
+//   }
+// }
 
-//Function to create an order
-async function createOrder(cart) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (!validateCart(cart)) {
-        reject(new Error("The shopping cart is empty."));
-      }
+// //Function to create an order
+// async function createOrder(cart) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (!validateCart(cart)) {
+//         reject(new Error("The shopping cart is empty."));
+//       }
 
-      const orderId = generateOrderId();
-      if (orderId) {
-        console.log("Shopping cart:", cart);
-        resolve(orderId);
-      } else {
-        reject(new Error("Failed to generate order ID."));
-      }
-    }, 1000); //Simulating server delay
-  });
-}
+//       const orderId = generateOrderId();
+//       if (orderId) {
+//         console.log("Shopping cart:", cart);
+//         resolve(orderId);
+//       } else {
+//         reject(new Error("Failed to generate order ID."));
+//       }
+//     }, 1000); //Simulating server delay
+//   });
+// }
 
-//function to validate the shopping cart
-function validateCart(cart) {
-  return cart.length > 0;
-}
+// //function to validate the shopping cart
+// function validateCart(cart) {
+//   return cart.length > 0;
+// }
 
-//function to geerate a unique orde ID
-function generateOrderId() {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-}
+// //function to geerate a unique orde ID
+// function generateOrderId() {
+//   return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+// }
 
-//function to simulate payment processing
-async function proceedToPayment(orderId) {
-    return new Promise((resolve, reject)=> {
-        setTimeout(()=>{
-            if (orderId) {
-                resolve("Payment successful.");
-            } else {
-                reject(new Error("Failed to proceed to payment."))
-            }
-        },3000) //Simulating payment processing delay
-    })
-}
+// //function to simulate payment processing
+// async function proceedToPayment(orderId) {
+//     return new Promise((resolve, reject)=> {
+//         setTimeout(()=>{
+//             if (orderId) {
+//                 resolve("Payment successful.");
+//             } else {
+//                 reject(new Error("Failed to proceed to payment."))
+//             }
+//         },3000) //Simulating payment processing delay
+//     })
+// }
 
-//Function to show order summary
-async function showOrderSummary(orderId) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (orderId) {
-                resolve("Order summary: Your items will be shipped soon.")
-            } else {
-                reject (new Error("Failed to show order summary."));
-            }
-        }, 1000); //Simulating server delay
-    })
-}
+// //Function to show order summary
+// async function showOrderSummary(orderId) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (orderId) {
+//                 resolve("Order summary: Your items will be shipped soon.")
+//             } else {
+//                 reject (new Error("Failed to show order summary."));
+//             }
+//         }, 1000); //Simulating server delay
+//     })
+// }
 
-//Function to update wallet
-async function updateWallet(orderId) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (orderId) {
-                resolve("Wallet updated successfully.")
-            } else {
-                reject(new Error("Failed to update wallet."));
-            }
-        }, 1000) //Simulating server delay
-    })
-}
-completePurchase(shoppingCart);
+// //Function to update wallet
+// async function updateWallet(orderId) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (orderId) {
+//                 resolve("Wallet updated successfully.")
+//             } else {
+//                 reject(new Error("Failed to update wallet."));
+//             }
+//         }, 1000) //Simulating server delay
+//     })
+// }
+// completePurchase(shoppingCart);
+
