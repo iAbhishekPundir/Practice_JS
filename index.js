@@ -839,3 +839,13 @@
 // completePurchase(shoppingCart);
 
 //async-await
+
+async function abc() {
+    const p = await getData(true);
+    return p;
+}
+
+function getData(status) {
+    return new Promise((resolve, reject) => status ? resolve("abc") : reject("not abc"));
+}
+console.log(abc()); 
