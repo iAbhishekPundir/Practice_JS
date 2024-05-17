@@ -840,12 +840,146 @@
 
 //async-await
 
-async function abc() {
-    const p = await getData(true);
-    return p;
+// async function abc() {
+//     const p = await getData(true);
+//     return p;
+// }
+
+// function getData(status) {
+//     return new Promise((resolve, reject) => status ? resolve("abc") : reject("not abc"));
+// }
+// console.log(abc());
+
+const p1 = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+        resolve("Promise1 resolved value1");
+    }, 10000); // 10000s
+});
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise2 resolved value2");
+    }, 10000); //5000s
+});
+
+//await can only be used inside an async function
+async function handlePromise() {
+    console.log("Namasate JavaScript1");
+    const val1 = await p1;
+    console.log("Namasate JavaScript2");
+    console.log(val1);
+    for(let i=1; i<=4;i++) {
+        setTimeout(()=> console.log(i), i*1000)
+    }
+    console.log("Namaste JavaScript3")
+    const val2 = await p2;
+    console.log("Namaste JavaScript4")
+    console.log(val2);
 }
 
-function getData(status) {
-    return new Promise((resolve, reject) => status ? resolve("abc") : reject("not abc"));
-}
-console.log(abc()); 
+console.log("start");
+handlePromise();
+console.log("Namaste JavaScript5");
+
+// Namasate JavaScript1
+// Namasate JavaScript5
+// Namasate JavaScript2
+//Promise1 resolved value1
+// Namasate JavaScript3
+// Namasate JavaScript4
+//Promise2 resolved value2
+
+// const p1 = new Promise( (resolve , reject ) => {
+//     setInterval(() => {
+//         resolve ("Promise p1 resolve");
+//     }, 10 * 1000);
+// })
+
+// const p2 = new Promise( (resolve , reject ) => {
+//     console.log("It came");
+//     setInterval(() => {
+//         resolve ("Promise return for 2");
+//     }, 5 * 1000);
+// })
+// async function solve(){
+
+//     await p1.then( (data) => {
+//         console.log(data);
+//     });
+
+//      console.log("after p1");
+
+//      await p2.then( (data) => {
+//          console.log(data);
+//      });
+
+//      console.log("after p2");
+// }
+
+// solve();
+
+// setTimeout(() => {
+//     console.log("After function");
+// }, 15 * 1000);
+
+//It came :
+//Promise p1 resolve : after 10s
+//after p1
+//Pomise return for 2 : after 5s included in 10s itself (didn't take extra 5s)
+//after p2
+//After function : after more 5s becoz it is scheduled after 15s
+
+// Here in the video, he is waiting on promise object:  const val = await p1;
+// and not on function ( its not p1() ), like for the following code:
+
+// function p1function() {
+//   const p1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("p1 Resolved Value!");
+//     }, 10000);
+//   });
+//   return p1;
+// }
+
+// function p2function() {
+//   const p2 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("p2 Resolved Value!");
+//     }, 5000);
+//   });
+//   return p2;
+// }
+
+// async function handlePromise() {
+//   console.log("Hello World !!");
+//   const val = await p1function();
+//   console.log("Namaste Javascript");
+//   console.log(val);
+
+//   const val2 = await p2function();
+//   console.log("Namaste Javascript 2");
+//   console.log(val2);
+// }
+
+// handlePromise();
+
+//Hello World !!
+//Namaste JavaScript
+//p1 Resolved Value
+// Namaste JavaScript2
+//p2 Resolved Value
+
+// notice here we are using await on p1function() and not on just p1 (promise object).
+// and for this above code , handlePromise() will exactly work as you would expect that is,  "Namaste Javascript" 
+// will be printed after 10 seconds, and 5 more seconds will be taken to print "Namaste Javascript 2".
+
+// Reason: When the await is used on the promise objects p1 and p2, the async function pauses its execution until the
+// corresponding promises are settled (resolved or rejected). The asynchronous operations inside the promises 
+// (such as setTimeout) are scheduled to run when the promise is created or instantiated, not when the await is reached.
+// The await keyword simply waits for the promise to resolve or reject before continuing the execution of the async function.
+
+// In the above code, the await is used on the functions p1function() and p2function(). This means the functions 
+// themselves are awaited, and the asynchronous operations inside these functions are started only when the functions 
+// are called (when the control of that async code will reaches function invocation line), so the handlePromise function
+//  will wait for the promises to get resolved as expecte
