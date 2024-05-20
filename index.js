@@ -849,7 +849,7 @@
 //     return new Promise((resolve, reject) => status ? resolve("abc") : reject("not abc"));
 // }
 // console.log(abc());
-
+debugger;
 const p1 = new Promise((resolve, reject) => {
 
     setTimeout(() => {
@@ -857,27 +857,30 @@ const p1 = new Promise((resolve, reject) => {
     }, 10000); // 10000s
 });
 
+debugger;
 const p2 = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve("Promise2 resolved value2");
-    }, 10000); //5000s
+    }, 20000); //5000s
 });
 
+debugger;
 //await can only be used inside an async function
 async function handlePromise() {
     console.log("Namasate JavaScript1");
     const val1 = await p1;
     console.log("Namasate JavaScript2");
     console.log(val1);
-    for(let i=1; i<=4;i++) {
-        setTimeout(()=> console.log(i), i*1000)
-    }
+    // for(let i=1; i<=4;i++) {
+    //     setTimeout(()=> console.log(i), i*1000)
+    // }
     console.log("Namaste JavaScript3")
     const val2 = await p2;
     console.log("Namaste JavaScript4")
     console.log(val2);
 }
 
+debugger;
 console.log("start");
 handlePromise();
 console.log("Namaste JavaScript5");
