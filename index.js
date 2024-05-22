@@ -987,4 +987,28 @@
 // are called (when the control of that async code will reaches function invocation line), so the handlePromise function
 //  will wait for the promises to get resolved as expecte
 
+let name1 = {
+    firstname: "Abhishek",
+    lastname: "Pundir",
+}
+
+let name2 = {
+    firstname: "Jiddu",
+    lastname: "Krishnamurti"
+}
+
+let name3 = {
+    firstname: "Osho",
+    lastname: "Rajneesh"
+}
+
+let printFullname = function (hometown, state) {
+    console.log(this.firstname + " " + this.lastname + " from " + hometown + ",", state);
+}
+
+printFullname.call(name1, "Saharanpur", "UP");
+printFullname.apply(name2, ["New york", "U.S.A"]);
+let printName = printFullname.bind(name3, "Pune", "Maharashtra");
+printName();
+
 
