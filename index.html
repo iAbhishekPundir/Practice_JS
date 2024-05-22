@@ -11,3 +11,42 @@
     <script src="./index.js"></script>
   </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this Keyword Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <script>
+        // JavaScript context
+        const obj = {
+            name: 'Alice',
+            greet: function() {
+                console.log(this); // obj
+            }
+        };
+        obj.greet();
+
+        // jQuery context
+        $('#myButton').click(function() {
+            console.log(this); // The button element
+            $(this).text('Clicked');
+        });
+
+        $('li').each(function() {
+            console.log(this); // Each <li> element
+            $(this).addClass('highlight');
+        });
+    </script>
+</body>
+</html> -->

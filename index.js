@@ -987,28 +987,81 @@
 // are called (when the control of that async code will reaches function invocation line), so the handlePromise function
 //  will wait for the promises to get resolved as expecte
 
-let name1 = {
-    firstname: "Abhishek",
-    lastname: "Pundir",
-}
+//*call, apply & bind methods in js
+// let name1 = {
+//     firstname: "Abhishek",
+//     lastname: "Pundir",
+// }
 
-let name2 = {
-    firstname: "Jiddu",
-    lastname: "Krishnamurti"
-}
+// let name2 = {
+//     firstname: "Jiddu",
+//     lastname: "Krishnamurti"
+// }
 
-let name3 = {
-    firstname: "Osho",
-    lastname: "Rajneesh"
-}
+// let name3 = {
+//     firstname: "Osho",
+//     lastname: "Rajneesh"
+// }
 
-let printFullname = function (hometown, state) {
-    console.log(this.firstname + " " + this.lastname + " from " + hometown + ",", state);
-}
+// let printFullname = function (hometown, state) {
+//     console.log(this.firstname + " " + this.lastname + " from " + hometown + ",", state);
+// }
 
-printFullname.call(name1, "Saharanpur", "UP");
-printFullname.apply(name2, ["New york", "U.S.A"]);
-let printName = printFullname.bind(name3, "Pune", "Maharashtra");
-printName();
+// printFullname.call(name1, "Saharanpur", "UP");
+// printFullname.apply(name2, ["New york", "U.S.A"]);
+// let printName = printFullname.bind(name3, "Pune", "Maharashtra");
+// printName();
+
+//* this keyword in JS
+
+// 1.Global Context: When this is used outside of any function, it refers to the global object (e.g., window in browsers).
+// console.log(this); // Window object (in browsers)
+
+// 2.Function Context: Inside a regular function, this refers to the global object in non-strict mode and undefined in strict mode.
+// "use strict mode"
+// function showThis() {
+//     console.log(this);
+// }
+
+// showThis(); // Window object (in non-strict mode), undefined (in strict mode)
+
+// 3.Method Context: When a function is called as a method of an object, this refers to the object that the method is called on.
+// const obj = {
+//     name: 'Alice',
+//     greet: function() {
+//         console.log(this.name);
+//     }
+// };
+
+// obj.greet(); // "Alice"
+
+// 4.Constructor Context: In a constructor function or class, this refers to the newly created instance.
+// function Person(name) {
+//     this.name = name;
+// }
+
+// const person1 = new Person('Bob');
+// console.log(person1.name); // "Bob"
+
+// 5.Arrow Functions: Arrow functions do not have their own this context; they inherit this from the enclosing scope.
+// const obj = {
+//     name: 'Alice',
+//     greet: function() {
+//         const innerFunc = () => {
+//             console.log(this.name);
+//         };
+//         innerFunc();
+//     }
+// };
+
+// obj.greet(); // "Alice"
+
+// const obj = {
+//     name: 'Alice',
+//     greet: innerFunc = () => console.log(this)
+// };
+
+// obj.greet(); 
+
 
 
