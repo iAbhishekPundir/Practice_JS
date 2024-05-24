@@ -1,3 +1,14 @@
+
+// console.log("hello");
+// const btn = document.querySelector(".click-btn");
+// // const btn = document.getElementsByClassName("click-btn")[0]; // Access the first element
+// btn.addEventListener("click", printHello);
+
+// function printHello () {
+//     console.log("Hello");
+// }
+
+
 // var a = 10;
 // function b() {
 //     var x = 10;
@@ -1061,7 +1072,33 @@
 //     greet: innerFunc = () => console.log(this)
 // };
 
+//* strict-mode in javascript
+
 // obj.greet(); 
+// "use strict";
 
+// const obj1 = {
+//     a:10,
+//     printScope : function () {
+//         console.log(this);
+//     }
+// }
+// obj1.printScope();
+// 1. For the Entire Script:
+// Place the directive at the top of the file.
 
+// "use strict";
+// // Entire script runs in strict mode
+// var a = 1;
+// console.log(a);
 
+// 2.For a Specific Function:
+// Place the directive at the beginning of the function body.
+function myFunction() {
+    "use strict";
+    // Function runs in strict mode
+    var b = 2;
+    console.log(b);
+}
+
+myFunction();
