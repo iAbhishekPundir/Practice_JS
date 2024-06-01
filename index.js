@@ -1094,11 +1094,44 @@
 
 // 2.For a Specific Function:
 // Place the directive at the beginning of the function body.
-function myFunction() {
-    "use strict";
-    // Function runs in strict mode
-    var b = 2;
-    console.log(b);
+// function myFunction() {
+//     "use strict";
+//     // Function runs in strict mode
+//     var b = 2;
+//     console.log(b);
+// }
+
+// myFunction();
+
+//*Implement a function that takes in a list of asynchronous functions and executes the async functions in series. That is, one at a time.
+
+
+async function asyncFunction1() {
+    console.log('Starting asyncFunction1');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Finished asyncFunction1');
 }
 
-myFunction();
+async function asyncFunction2() {
+    console.log('Starting asyncFunction2');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Finished asyncFunction2');
+}
+
+async function asyncFunction3() {
+    console.log('Starting asyncFunction3');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Finished asyncFunction3');
+}
+
+const asyncFunctions = [asyncFunction1, asyncFunction2, asyncFunction3];
+
+async function executeInSeries(asyncFunctions) {
+    for (const asyncFunction of asyncFunctions) {
+        await asyncFunction();
+    }
+}
+
+executeInSeries(asyncFunctions).then(()=> {
+    console.log('All async functions executed in series');
+})
